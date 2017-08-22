@@ -1,3 +1,24 @@
 class resource {
-    int value
+    getValue() : int
 }
+
+class Brick {
+}
+
+class Food {
+}
+
+class Tool {
+}
+
+class Wine {
+}
+
+class Cloth {
+}
+
+class resource <|- Brick
+class resource <|- Food
+class resource <|- Tool
+class resource <|- Wine
+class resource <|- Cloth
