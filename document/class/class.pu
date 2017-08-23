@@ -22,3 +22,30 @@ class resource <|- Food
 class resource <|- Tool
 class resource <|- Wine
 class resource <|- Cloth
+
+
+enum CityGroup {
+  A
+  B
+  C
+  D
+}
+
+enum Region {
+  City[] cities
+}
+
+class City {
+  String name
+  CityGroup group
+  Resource resource
+  Road[] roads
+}
+
+class Road {
+  City[2] cities
+  bool isPlayerIn
+}
+
+class Region *-- City
+class City *-- CityGroup
