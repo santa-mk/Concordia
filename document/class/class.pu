@@ -49,3 +49,36 @@ class Road {
 
 class Region *-- City
 class City *-- CityGroup
+
+enum God {
+  VESTA
+  JUPITER
+  SATURNUS
+  MERCURIUS
+  MARS
+  MINERVA
+}
+
+Enum CardType {
+  TRIBUNE
+  ARCHITECT
+  PREFECT
+  COLONIST
+  MERCATOR
+  DIPLOMAT
+  SENATOR
+  CONSUL
+  MASON
+  FARMER
+  SMITH
+  VINTER
+  WEAVER
+}
+
+class Card {
+  God god
+  CardType type
+}
+
+class Card *-- God
+class Card *-- CardType
