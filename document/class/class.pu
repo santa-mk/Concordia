@@ -1,3 +1,132 @@
-class resource {
-    int value
+class Resource {
+    int getValue()
 }
+
+class Brick {
+}
+
+class Food {
+}
+
+class Tool {
+}
+
+class Wine {
+}
+
+class Cloth {
+}
+
+class Resource <|- Brick
+class Resource <|- Food
+class Resource <|- Tool
+class Resource <|- Wine
+class Resource <|- Cloth
+
+
+enum CityGroup {
+  A
+  B
+  C
+  D
+}
+
+enum Region {
+  City[] cities
+}
+
+class City {
+  String name
+  CityGroup group
+  Resource resource
+  Road[] roads
+}
+
+class Road {
+  City[2] cities
+  bool isColonistIn()
+}
+
+class Region *-- City
+class City *-- CityGroup
+
+enum God {
+  VESTA
+  JUPITER
+  SATURNUS
+  MERCURIUS
+  MARS
+  MINERVA
+}
+
+Enum CardType {
+  TRIBUNE
+  ARCHITECT
+  PREFECT
+  COLONIST
+  MERCATOR
+  DIPLOMAT
+  SENATOR
+  CONSUL
+  MASON
+  FARMER
+  SMITH
+  VINTER
+  WEAVER
+}
+
+class Card {
+  God god
+  CardType type
+}
+
+class Card *-- God
+class Card *-- CardType
+
+enum PlayerColor {
+  Red
+  Blue
+  Green
+  Yellow
+  Black
+}
+
+class Colonist {
+  Road isIn
+  bool isRand
+  PlayerColor color
+
+  bool isRand()
+}
+
+class StoreHouse {
+  Colonist[] colonist
+  Resource[] resources
+  bool isFull()
+  bool push(Resource resouce)
+  Resource pop(Resouce resouce)
+}
+
+class House {
+  PlayerColor color
+}
+
+class Player {
+  PlayerColor color
+  int victoryPoint
+  int coin
+  Colonist[] colonists
+  House[] houses
+  Card[] cards
+  StoreHouse storeHouse
+}
+
+class Colonist *-- PlayerColor
+class House *-- PlayerColor
+class StoreHouse *-- Colonist
+class StoreHouse *-- Resource
+class Player *-- StoreHouse
+class Player *-- Colonist
+class Player *-- PlayerColor
+class Player *-- Card
+class Player *-- House
