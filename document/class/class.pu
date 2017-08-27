@@ -44,7 +44,7 @@ class City {
 
 class Road {
   City[2] cities
-  bool isPlayerIn
+  bool isColonistIn()
 }
 
 class Region *-- City
@@ -82,3 +82,51 @@ class Card {
 
 class Card *-- God
 class Card *-- CardType
+
+enum PlayerColor {
+  Red
+  Blue
+  Green
+  Yellow
+  Black
+}
+
+class Colonist {
+  Road isIn
+  bool isRand
+  PlayerColor color
+
+  bool isRand()
+}
+
+class StoreHouse {
+  Colonist[] colonist
+  Resource[] resources
+  bool isFull()
+  bool push(Resource resouce)
+  Resource pop(Resouce resouce)
+}
+
+class House {
+  PlayerColor color
+}
+
+class Player {
+  PlayerColor color
+  int victoryPoint
+  int coin
+  Colonist[] colonists
+  House[] houses
+  Card[] cards
+  StoreHouse storeHouse
+}
+
+class Colonist *-- PlayerColor
+class House *-- PlayerColor
+class StoreHouse *-- Colonist
+class StoreHouse *-- Resource
+class Player *-- StoreHouse
+class Player *-- Colonist
+class Player *-- PlayerColor
+class Player *-- Card
+class Player *-- House
