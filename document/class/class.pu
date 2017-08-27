@@ -75,9 +75,16 @@ Enum CardType {
   WEAVER
 }
 
+class CardList {
+  int playedNum()
+  void refresh()
+}
 class Card {
   God god
   CardType type
+  bool isPlayed
+
+  bool enable()
 }
 
 class Card *-- God
@@ -115,12 +122,19 @@ class Player {
   PlayerColor color
   int victoryPoint
   int coin
+  bool isMagnus
   Colonist[] colonists
   House[] houses
-  Card[] cards
+  CardList cards
   StoreHouse storeHouse
+
+  bool isPrefectureMagnus()
+
+  ' card action
+  void tribune(bool addColonist)
 }
 
+class CardList *-- Card
 class Colonist *-- PlayerColor
 class House *-- PlayerColor
 class StoreHouse *-- Colonist
@@ -128,5 +142,5 @@ class StoreHouse *-- Resource
 class Player *-- StoreHouse
 class Player *-- Colonist
 class Player *-- PlayerColor
-class Player *-- Card
+class Player *-- CardList
 class Player *-- House
