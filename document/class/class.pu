@@ -1,5 +1,5 @@
-class resource {
-    getValue() : int
+class Resource {
+    int getValue()
 }
 
 class Brick {
@@ -17,11 +17,11 @@ class Wine {
 class Cloth {
 }
 
-class resource <|- Brick
-class resource <|- Food
-class resource <|- Tool
-class resource <|- Wine
-class resource <|- Cloth
+class Resource <|- Brick
+class Resource <|- Food
+class Resource <|- Tool
+class Resource <|- Wine
+class Resource <|- Cloth
 
 
 enum CityGroup {
