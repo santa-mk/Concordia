@@ -23,7 +23,6 @@ class Resource <|- Tool
 class Resource <|- Wine
 class Resource <|- Cloth
 
-
 enum CityGroup {
   A
   B
@@ -31,8 +30,19 @@ enum CityGroup {
   D
 }
 
-enum Region {
+class Region {
+  String name
   City[] cities
+  Resouce bonusResource
+  bool isPlayed
+
+  bool enablePrefect()
+  Resource[] prefect()
+}
+
+class RegionList {
+  void refresh()
+  int prefectCoin()
 }
 
 class BuildCost {
@@ -55,6 +65,7 @@ class Road {
   bool isColonistIn()
 }
 
+class RegionList *-- Region
 class Region *-- City
 class City *-- CityGroup
 
@@ -145,6 +156,7 @@ class Player {
   ' card action
   void tribune(bool addColonist)
   void architect()
+  void prefect(bool getMoney)
 }
 
 class CardList *-- Card
