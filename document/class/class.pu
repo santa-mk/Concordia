@@ -50,6 +50,8 @@ class BuildCost {
   Resource[] resources
 }
 
+class BuildCost *-- Resource
+
 class City {
   String name
   CityGroup group
@@ -94,20 +96,29 @@ Enum CardType {
   WEAVER
 }
 
-class CardList {
-  int playedNum()
-  void refresh()
-}
 class Card {
   God god
   CardType type
   bool isPlayed
+  Resource[] cost
 
   bool enable()
 }
 
 class Card *-- God
 class Card *-- CardType
+class Card *-- Resource
+
+class CardList {
+  int playedNum()
+  void refresh()
+}
+
+class SellCardList {
+  void initialize(int playerNum)
+  Resource[] getCost(int index)
+  Card buy(int index)
+}
 
 enum PlayerColor {
   Red
@@ -162,9 +173,11 @@ class Player {
   int sell(Resource[] resources)
   Resource[] buy(Resource resource, int num)
   void diplomat(Player player)
+  void senator()
 }
 
 class CardList *-- Card
+class SellCardList *-- Card
 class Colonist *-- PlayerColor
 class ColonistList *-- Colonist
 class House *-- PlayerColor
