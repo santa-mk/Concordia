@@ -175,6 +175,7 @@ class Player {
   void diplomat(Player player)
   void senator()
   void consul()
+  void specialist(Resource resource)
 }
 
 class CardList *-- Card
