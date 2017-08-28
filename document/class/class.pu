@@ -116,7 +116,7 @@ class CardList {
 
 class SellCardList {
   void initialize(int playerNum)
-  Resource[] getCost(int index)
+  Resource[] getCost(int index, bool isConsul)
   Card buy(int index)
 }
 
@@ -174,6 +174,7 @@ class Player {
   Resource[] buy(Resource resource, int num)
   void diplomat(Player player)
   void senator()
+  void consul()
 }
 
 class CardList *-- Card
