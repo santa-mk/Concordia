@@ -157,6 +157,7 @@ class Player {
   void tribune(bool addColonist)
   void architect()
   void prefect(bool getMoney)
+  void colonist(bool getMoney)
 }
 
 class CardList *-- Card
