@@ -158,6 +158,9 @@ class Player {
   void architect()
   void prefect(bool getMoney)
   void colonist(bool getMoney)
+  void mercator()
+  int sell(Resource[] resources)
+  Resource[] buy(Resource resource, int num)
 }
 
 class CardList *-- Card
