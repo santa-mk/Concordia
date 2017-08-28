@@ -161,6 +161,7 @@ class Player {
   void mercator()
   int sell(Resource[] resources)
   Resource[] buy(Resource resource, int num)
+  void diplomat(Player player)
 }
 
 class CardList *-- Card
