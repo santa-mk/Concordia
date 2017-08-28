@@ -23,7 +23,6 @@ class Resource <|- Tool
 class Resource <|- Wine
 class Resource <|- Cloth
 
-
 enum CityGroup {
   A
   B
@@ -31,15 +30,36 @@ enum CityGroup {
   D
 }
 
-enum Region {
+class Region {
+  String name
   City[] cities
+  Resouce bonusResource
+  bool isPlayed
+
+  bool enablePrefect()
+  Resource[] prefect()
 }
+
+class RegionList {
+  void refresh()
+  int prefectCoin()
+}
+
+class BuildCost {
+  int coin
+  Resource[] resources
+}
+
+class BuildCost *-- Resource
 
 class City {
   String name
   CityGroup group
   Resource resource
   Road[] roads
+
+  BuildCost cost()
+  void build(BuildCost cost)
 }
 
 class Road {
@@ -47,6 +67,7 @@ class Road {
   bool isColonistIn()
 }
 
+class RegionList *-- Region
 class Region *-- City
 class City *-- CityGroup
 
@@ -78,10 +99,26 @@ Enum CardType {
 class Card {
   God god
   CardType type
+  bool isPlayed
+  Resource[] cost
+
+  bool enable()
 }
 
 class Card *-- God
 class Card *-- CardType
+class Card *-- Resource
+
+class CardList {
+  int playedNum()
+  void refresh()
+}
+
+class SellCardList {
+  void initialize(int playerNum)
+  Resource[] getCost(int index, bool isConsul)
+  Card buy(int index)
+}
 
 enum PlayerColor {
   Red
@@ -89,6 +126,10 @@ enum PlayerColor {
   Green
   Yellow
   Black
+}
+
+class ColonistList {
+  void move()
 }
 
 class Colonist {
@@ -115,18 +156,37 @@ class Player {
   PlayerColor color
   int victoryPoint
   int coin
-  Colonist[] colonists
+  bool isMagnus
+  ColonistList colonists
   House[] houses
-  Card[] cards
+  CardList cards
   StoreHouse storeHouse
+
+  bool isPrefectureMagnus()
+
+  ' card action
+  void tribune(bool addColonist)
+  void architect()
+  void prefect(bool getMoney)
+  void colonist(bool getMoney)
+  void mercator()
+  int sell(Resource[] resources)
+  Resource[] buy(Resource resource, int num)
+  void diplomat(Player player)
+  void senator()
+  void consul()
+  void specialist(Resource resource)
 }
 
+class CardList *-- Card
+class SellCardList *-- Card
 class Colonist *-- PlayerColor
+class ColonistList *-- Colonist
 class House *-- PlayerColor
 class StoreHouse *-- Colonist
 class StoreHouse *-- Resource
 class Player *-- StoreHouse
-class Player *-- Colonist
+class Player *-- ColonistList
 class Player *-- PlayerColor
-class Player *-- Card
+class Player *-- CardList
 class Player *-- House
