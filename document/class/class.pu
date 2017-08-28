@@ -35,11 +35,19 @@ enum Region {
   City[] cities
 }
 
+class BuildCost {
+  int coin
+  Resource[] resources
+}
+
 class City {
   String name
   CityGroup group
   Resource resource
   Road[] roads
+
+  BuildCost cost()
+  void build(BuildCost cost)
 }
 
 class Road {
@@ -98,6 +106,10 @@ enum PlayerColor {
   Black
 }
 
+class ColonistList {
+  void move()
+}
+
 class Colonist {
   Road isIn
   bool isRand
@@ -123,7 +135,7 @@ class Player {
   int victoryPoint
   int coin
   bool isMagnus
-  Colonist[] colonists
+  ColonistList colonists
   House[] houses
   CardList cards
   StoreHouse storeHouse
@@ -132,15 +144,17 @@ class Player {
 
   ' card action
   void tribune(bool addColonist)
+  void architect()
 }
 
 class CardList *-- Card
 class Colonist *-- PlayerColor
+class ColonistList *-- Colonist
 class House *-- PlayerColor
 class StoreHouse *-- Colonist
 class StoreHouse *-- Resource
 class Player *-- StoreHouse
-class Player *-- Colonist
+class Player *-- ColonistList
 class Player *-- PlayerColor
 class Player *-- CardList
 class Player *-- House
