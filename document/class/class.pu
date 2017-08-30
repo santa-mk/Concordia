@@ -67,9 +67,28 @@ class Road {
   bool isColonistIn()
 }
 
+enum MapVersion {
+  IMPERIUM
+  ITALIA
+  BRITANIA
+  GERMANIA
+  GALLIA
+  CORSICA
+}
+
+class Map {
+  RegionList
+  Road[] roads
+
+  void initialize(MapVersion version)
+}
+
 class RegionList *-- Region
 class Region *-- City
 class City *-- CityGroup
+class Map *-- MapVersion
+class Map *-- RegionList
+class Map *-- Road
 
 enum God {
   VESTA
